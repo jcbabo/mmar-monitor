@@ -26,6 +26,7 @@ def detectar_versao(host: str, porta: int) -> str | None:
 def conectar(host: str, porta: int) -> webdriver.Chrome:
     options = Options()
     options.add_experimental_option("debuggerAddress", f"{host}:{porta}")
+    options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
     versao = detectar_versao(host, porta)
     if versao:
         options.browser_version = versao
